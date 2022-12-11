@@ -83,6 +83,8 @@ if ( !class_exists( 'MVIFileAttatchmentBase' ) ) {
 
 }
 
+new MVIFileAttachment\MyVirtualPage;
+
 
 /********************
 Add form and content to theme.

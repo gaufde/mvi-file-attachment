@@ -26,7 +26,7 @@ class Posts implements FieldsInterface {
     $fields = [
           'title'      => __( 'Attach Download File', 'mvi-file-attachment' ),
           'id'         => self::get_id(),
-          'post_types' => ['post', 'page', 'applications'],
+          'post_types' => \MVIFileAttachment\Settings::get_field_value('settings_select_pt'),
           'style'      => 'seamless',
           'fields'     => [
               [

@@ -69,6 +69,6 @@ class Taxonomy {
     		],
     	];
       //$post_types = get_post_types();
-    	register_taxonomy( self::get_id(), ['post', 'page', 'applications'], $args );
+    	register_taxonomy( self::get_id(), \MVIFileAttachment\Settings::get_field_value('settings_select_pt'), $args );
     }
 }
