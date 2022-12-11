@@ -1,0 +1,179 @@
+#mvi_fa_frontend-form-fields .rwmb-column {
+	margin-right: 2%;
+	box-sizing: border-box;
+}
+
+#mvi_fa_frontend-form-fields .rwmb-row .rwmb-column:last-of-type {
+	margin-right: 0;
+}
+
+#mvi_fa_frontend-form-fields .rwmb-column-8 {
+	width: 66.5%;
+}
+
+#mvi_fa_frontend-form-fields .rwmb-column-6 {
+	width: 49%;
+}
+
+#mvi_fa_frontend-form-fields .rwmb-column-4 {
+	width: 31.5%;
+}
+
+.rwmb-label{
+	display: none !important;
+}
+
+.rwmb-error{
+	font-size: 16px;
+	padding-left: 1em;
+}
+
+.file-download-form {
+	border: solid 3px #e6edf5;
+	padding: var(--content-spacing);
+	max-width: var(--narrow-container-max-width) !important;
+	margin: 0 auto;
+}
+
+.rwmb-form.loading{
+	opacity: 0.5;
+}
+
+.rwmb-button{
+	font-family: var(--buttonFontFamily,var(--fontFamily));
+	font-size: var(--buttonFontSize);
+	font-weight: var(--buttonFontWeight);
+	font-style: var(--buttonFontStyle);
+	line-height: var(--buttonLineHeight);
+	letter-spacing: var(--buttonLetterSpacing);
+	text-transform: var(--buttonTextTransform);
+	-webkit-text-decoration: var(--buttonTextDecoration);
+	text-decoration: var(--buttonTextDecoration);
+	position: relative;
+	color: var(--buttonTextInitialColor);
+	border: var(--button-border);
+	background-color: var(--buttonInitialColor);
+	display: var(--display, inline-flex);
+	align-items: center;
+	justify-content: center;
+	min-height: var(--buttonMinHeight);
+	padding: var(--button-padding);
+	border: none;
+	-webkit-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
+	text-align: center;
+	border-radius: var(--buttonBorderRadius, 3px);
+	transition: all 0.2s ease;
+	--has-link-decoration: var(--false);
+}
+
+.rwmb-loading{
+
+}
+
+.country_code .rwmb-input{
+	display: flex !important;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.country_code .rwmb-input input{
+	flex: 1 1 0;
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+}
+
+.country_code .rwmb-error {
+	flex: 1 1 100%;
+}
+
+.country_code .rwmb-input::before{
+	flex: 0 1 auto;
+	background: #E0E0E0;
+	content: "+";
+	line-height: var(--form-field-height, 40px);
+	height: var(--form-field-height, 40px);
+	padding-right: 2%;
+	padding-left: 3%;
+	border-top-left-radius: var(--has-classic-forms, var(--form-field-border-radius, 3px));
+	border-bottom-left-radius: var(--has-classic-forms, var(--form-field-border-radius, 3px));
+}
+
+.country_code .rwmb-input{
+  width: 80%;
+}
+
+
+/*checkmark*/
+.rwmb-input .description{
+	display: flex;
+}
+
+.rwmb-input .description{
+	display: flex;
+}
+
+.rwmb-input input[type="checkbox"]{
+	position: absolute;
+	clip: rect(1px, 1px, 1px, 1px);
+	-webkit-clip-path: inset(0px 0px 99.9% 99.9%);
+	clip-path: inset(0px 0px 99.9% 99.9%);
+	overflow: hidden;
+	height: 1px;
+	width: 1px;
+	padding: 0;
+	border: 0;
+}
+
+.rwmb-form .checkmark{
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  min-width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #e0e0e0;
+	margin-right: 10px;
+}
+
+.rwmb-checkbox:focus + .checkmark,
+.rwmb-checkbox-wrapper:hover .checkmark{
+  border: solid 2px var(--paletteColor1);
+}
+
+.rwmb-form .checkmark{
+  border-radius: 2px;
+  position: relative;
+  top: 0px;
+}
+
+.rwmb-form .description input:checked + .checkmark{
+  background-color: var(--paletteColor1);
+}
+
+.rwmb-form .description .label{
+  padding-left: 10px;
+}
+
+.rwmb-form .checkmark svg {
+  display: none;
+  width: 10px;
+}
+
+.rwmb-form input:checked + .checkmark svg {
+  display: block;
+  color: var(--paletteColor7);
+}
+
+.sticky-file-download-form {
+	position: sticky;
+	top: 10%;
+}
