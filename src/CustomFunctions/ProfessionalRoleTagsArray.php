@@ -5,7 +5,10 @@ namespace MVIFileAttachment\CustomFunctions;
 //The class ensures the arrays always agree with eachother for updating the Mailchimp database.
 Class ProfessionalRoleTagsArray{
   public function __construct() {
-    $this->professional_role_tags = ["Professor", "Industry Professional", "Post Doc", "Graduate Student", "Job Seeker", "Test"];
+    /********************
+    Edit this array to change the professional role tags displayed on the front end.
+    ********************/
+    $this->professional_role_tags = ["Professor", "Industry Professional", "Post Doc", "Graduate Student", "Job Seeker"];
   }
 
   public function generate_associative_array() {
