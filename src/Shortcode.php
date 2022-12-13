@@ -22,7 +22,7 @@ Class Shortcode{
   }
 
   public static function get_id() {
-    $shortcode_id = \MVIFileAttatchmentBase::PLUGIN_PREFIX . "frontend-form";
+    $shortcode_id = \MVIFileAttatchmentBase::PLUGIN_PREFIX . "frontend_form";
     return $shortcode_id;
   }
 
