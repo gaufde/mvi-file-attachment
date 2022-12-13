@@ -51,10 +51,10 @@ if ( !class_exists( 'MVIFileAttatchmentBase' ) ) {
     }
 
     public function on_loaded() {
-      new MVIFileAttachment\PostType; //Create the post type for storing downloads
-      new MVIFileAttachment\Taxonomy; //Create a custom taxonomy for tracking if a file exists
+      MVIFileAttachment\PostType::register(); //Create the post type for storing downloads
+      MVIFileAttachment\Taxonomy::register(); //Create a custom taxonomy for tracking if a file exists
       MVIFileAttachment\Fields::register(); //Create all the custom fields
-      new MVIFileAttachment\DownloadPage; //Create the virtual download page
+      MVIFileAttachment\VirtualDownloadPage\Controller::register( new MVIFileAttachment\VirtualDownloadPage\TemplateLoader); //Create the virtual download page
       new MVIFileAttachment\Shortcode; //load assets, prepare shortcode for displaying the custom download form
       MVIFileAttachment\CustomFunctions\ProcessSubmission::register();
     }
@@ -63,9 +63,9 @@ if ( !class_exists( 'MVIFileAttatchmentBase' ) ) {
       if ( !is_admin() ) {
         return;
       }
-      new MVIFileAttachment\CustomAdminColumn(); //Create the custom admin column
-      new MVIFileAttachment\Settings; //Create the settings page
-      new MVIFileAttachment\CustomFunctions\ApplyTaxonomy; //Apply the taxonomy every time a post is saved
+      MVIFileAttachment\CustomAdminColumn::register(); //Create the custom admin column
+      MVIFileAttachment\Settings::register(); //Create the settings page
+      MVIFileAttachment\CustomFunctions\ApplyTaxonomy::register(); //Apply the taxonomy every time a post is saved
 
     }
 
@@ -82,17 +82,3 @@ if ( !class_exists( 'MVIFileAttatchmentBase' ) ) {
   add_action('plugins_loaded', array('MVIFileAttatchmentBase', 'register'));
 
 }
-
-
-/********************
-Add form and content to theme.
-********************/
-
-//Add PDF badge to application cards using Blocksy theme hook
-function applications_pdf_badge( $query ) {
-	$pdf_file = rwmb_meta( \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'post_download_file' );
-if ( 'applications' == get_post_type() && !is_search() && !empty($pdf_file) ) {
-	echo '<a class=\'pdf-badge\' href=" ' . get_post_permalink() . ' ">PDF</a>';
-	}
-}
-add_action( 'blocksy:loop:card:start', 'applications_pdf_badge');

@@ -1,12 +1,20 @@
 <?php
 namespace MVIFileAttachment;
 
-//Create settings page
+//Create settings page for the plugin
 class Settings {
 
 	public function __construct() {
-			add_filter( 'mb_settings_pages', [$this, 'create_settings_page'] );
+
 	}
+
+	/**
+   * Registers this class with WordPress.
+   */
+  public static function register() {
+    $plugin = new self();
+    add_filter( 'mb_settings_pages', [$plugin, 'create_settings_page'] );
+  }
 
 	/**
    * Get ID

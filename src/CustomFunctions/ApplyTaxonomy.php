@@ -3,9 +3,18 @@ namespace MVIFileAttachment\CustomFunctions;
 
 //This class updates the has_file term each time a pdf is added to a post
 Class ApplyTaxonomy{
+  
   public function __construct() {
+
+  }
+
+  /**
+   * Registers this class with WordPress.
+   */
+  public static function register() {
+    $plugin = new self();
     //run when the Posts field group is saved
-    add_action( 'rwmb_' . \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'attach_download_file_after_save_post', [$this, 'save_term'] );
+    add_action( 'rwmb_' . \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'attach_download_file_after_save_post', [$plugin, 'save_term'] );
   }
 
   //https://tommcfarlin.com/save_post-in-wordpress/

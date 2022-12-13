@@ -3,7 +3,14 @@ namespace MVIFileAttachment;
 
 class Taxonomy {
     public function __construct() {
-        add_action( 'wp_loaded', [ $this, 'file_download_register_taxonomy' ] );
+    }
+
+    /**
+     * Registers this class with WordPress.
+     */
+    public static function register() {
+      $plugin = new self();
+      add_action( 'wp_loaded', [ $plugin, 'file_download_register_taxonomy' ] );
     }
 
     /**

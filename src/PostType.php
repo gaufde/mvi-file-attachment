@@ -2,8 +2,17 @@
 namespace MVIFileAttachment;
 
 class PostType {
+
+    /**
+     * Registers this class with WordPress.
+     */
+    public static function register() {
+      $plugin = new self();
+      add_action( 'wp_loaded', [ $plugin, 'register_post_type' ] );
+    }
+
     public function __construct() {
-        add_action( 'wp_loaded', [ $this, 'register_post_type' ] );
+      
     }
 
     /**
