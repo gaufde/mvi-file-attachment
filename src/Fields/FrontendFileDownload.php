@@ -48,7 +48,7 @@ class FrontendFileDownload implements FieldsInterface {
         'fields'     => [
             [
                 'type'          => 'custom_html',
-                'std'          => '<em>No spam, a download link will be sent directly to you. </em>',
+                'std'          => '<em class="spam-notice">No spam, a download link will be sent directly to you. </em>',
             ],
             [
                 'name'          => __( 'First Name', 'mvi-file-attachment' ),

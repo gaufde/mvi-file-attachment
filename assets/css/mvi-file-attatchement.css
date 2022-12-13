@@ -19,6 +19,10 @@
 	width: 31.5%;
 }
 
+.spam-notice {
+	font-size: 0.08 em;
+}
+
 .rwmb-label{
 	display: none !important;
 }
