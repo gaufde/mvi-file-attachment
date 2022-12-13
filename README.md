@@ -19,3 +19,17 @@ If you would like to output a custom title for one instance, you can override th
 If you want to display the short title: [mvi_fa_frontend_form form="false" use_short_title="true"].
 
 I suggest putting the shortcode [mvi_fa_frontend_form] in a template or theme hook so that it renders of every single page. Then, if you would like to make buttons that link to the form (or trigger a modal if you put the form in a pop-up), then use [mvi_fa_frontend_form form="false" use_short_title="true"] as the button text.
+
+## Features
+
+When a download file on a post is updated, all existing user download links will still find and deliver the new file, even if the file path changed.
+
+Download files are stored in a folder in the website root. That way, with the proper folder permissions, it is impossible for anyone to directly access a download file.
+
+Download files are not shown in Wordpress media. That way, an admin can not accidentally delete a download file.
+
+Once a week, the site admin is emailed a CSV export of all submissions. Additionally, the CSV file is saved in a folder outside of the public root. This should keep user data reasonably safe.
+
+If Mailchimp API details are saved in settings, then the plugin will handle subscribing users if the choose to. The plugin will tag the user with three tags: 'Downloaded PDF,' 'the_title_of_the_post_they_downloaded_from,' and 'their_professional_role.' Those last two tags are dynamic and so the values will depend on each submission.
+
+If the user is already in the Mailchimp list, then each time they submit a download request, the tags will be updated appropriately. Each user is only allowed to have one professional role at a time.
