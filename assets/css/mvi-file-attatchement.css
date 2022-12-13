@@ -34,9 +34,12 @@
 
 .file-download-form {
 	border: solid 3px #e6edf5;
-	padding: var(--content-spacing);
-	max-width: var(--narrow-container-max-width) !important;
+	padding: 1.2em;
 	margin: 0 auto;
+}
+
+.file-download-form .form-title {
+	margin-top: 0;
 }
 
 .rwmb-form.loading{
@@ -115,6 +118,7 @@
 /*checkmark*/
 .rwmb-input .description{
 	display: flex;
+	margin-top: 8px;
 }
 
 .rwmb-input .description{
