@@ -21,6 +21,11 @@ Class Shortcode{
     });
   }
 
+  public static function get_id() {
+    $shortcode_id = self::PLUGIN_PREFIX . "frontend-form";
+    return $shortcode_id;
+  }
+
 
   /**
    * Recaptcha
@@ -84,7 +89,7 @@ Class Shortcode{
     'short_title' => $short_title,
     'form' => 'true',
     'use_short_title' => 'false',
-    ], $atts, 'post_file_download_form' );
+    ], $atts, self::get_id() );
 
 
     $files = rwmb_meta( \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'post_download_file', array( 'limit' => 1 )); //get only the first file from the array
@@ -137,7 +142,7 @@ Class Shortcode{
 
 
   public function register_shortcode () {
-      add_shortcode( 'post_file_download_form', [$this, 'insert_file_download_form'] );
+      add_shortcode( self::get_id(), [$this, 'insert_file_download_form'] );
   }
 
 
