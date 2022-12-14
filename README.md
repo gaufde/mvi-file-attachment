@@ -13,15 +13,17 @@ A gated content plugin to handle adding files to Wordpress posts, capturing user
 
 ## Features
 - Submissions are stored in a custom table.
+- Download links expire after 24 hrs.
+- Download links hide the direct path to the file.
 - Download file paths can be updated without breaking download links that were already generated.
-- If a post has a file attached, then the term `has_file` will automatically be applied in the taxonomy `mvi_fa_file-status`. This lets you do conditional filtering on the frontend with many themes.
+- If a post has a file attached, then the term `has_file` will automatically be applied in the taxonomy `mvi_fa_file-status`. This lets you do conditional filtering on the frontend.
 - Download files are stored in /{root}/file_downloads/secure/ so that you can set custom folder permissions and prevent direct access.
 - Download files are not added to Wordpress media. That way they can't be accidentally deleted
-- Once a week, the plugin will export a CSV will all submissions. CSV files are generated above the root in /csvoutput/.
+- Once a week, the plugin will export a CSV with all submissions. CSV files are generated above the root in /csvoutput/.
 - If the recaptcha key and secret are configured, then the download form will use them.
 - If Mailchimp API settings are configured, then a subscribe option will be added to the form.
-  - When users subscribe, they are automatically tagged with 'Downloaded PDF,' 'the_title_of_the_post_they_downloaded_from,' and 'their_professional_role.'
-  - If a user is already subscribed to the Mailchimp list, then their tags will be updated every time they submit the form.
+  - When users subscribe, they are automatically tagged with 'Downloaded PDF,' the 'title_of_the_post_they_downloaded_from,' and their 'professional_role.'
+  - If a user is already subscribed to the Mailchimp list, then their tags will be updated every time they submit the form, even if they don't choose to subscribe/resubscribe.
   - A user can only have one professional role tag in Mailchimp at a time.
   - The user will see a response on the frontend if their subscription succeeded.
 
