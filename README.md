@@ -11,23 +11,6 @@ A gated content plugin to handle adding files to Wordpress posts, capturing user
   - Meta Box Columns 1.2.15+
   - Meta Box Tooltip 1.1.6+
 
-
-## Set up
-Download the zip and then upload it to WP. Install and activate the plugin.
-
-Navigate to File Downloads -> Settings to configure the plugin. Choose which post types you would like to offer downloads on. Configure the 'From Address', 'From Name', and 'Email CSV exports' fields. The rest are optional.
-
-## Use
-On post types configured to accept downloads, there will be a field at the bottom of the page to upload a file. This is the file that will be served as a download. The other two optional fields allow you to configure the title of the form and a shortened title of the form. These titles will be used on the frontend of that post, unless the shortcode overrides them.
-
-On the frontend, simply use the shortcode `[mvi_fa_frontend_form]` to display the form on the frontend. The form will only render if the current post has a download file attached.
-
-The shortcode can be used to display the form title only: `[mvi_fa_frontend_form form="false"]`.
-If you would like to output a custom title for one instance, you can override the default form title in the shortcode: `[mvi_fa_frontend_form title="My custom title"]`.
-If you want to display the short title: `[mvi_fa_frontend_form form="false" use_short_title="true"]`.
-
-I suggest putting the shortcode `[mvi_fa_frontend_form]` in a template or theme hook so that it renders of every single page. Then, if you would like to make buttons that link to the form (or trigger a modal if you put the form in a pop-up), then use `[mvi_fa_frontend_form form="false" use_short_title="true"]` as the button text.
-
 ## Features
 - Submissions are stored in a custom table.
 - Download file paths can be updated without breaking download links that were already generated.
@@ -40,3 +23,20 @@ I suggest putting the shortcode `[mvi_fa_frontend_form]` in a template or theme 
   - When users subscribe, they are automatically tagged with 'Downloaded PDF,' 'the_title_of_the_post_they_downloaded_from,' and 'their_professional_role.'
   - If a user is already subscribed to the Mailchimp list, then their tags will be updated every time they submit the form.
   - A user can only have one professional role tag in Mailchimp at a time.
+  - The user will see a response on the frontend if their subscription succeeded.
+
+## Use
+1. Download and activate the plugin
+2. Go to File Downloads -> Settings in the Wordpress admin.
+3. Configure the settings. Most important are the 'From Address', 'From Name', 'Email CSV exports' and 'Select Post Types' fields. The rest are optional.
+4. Navigate to a post to attatch a download file (must be a post type selected in Settings). Scroll to the bottom and upload the desired file.
+  1. Optional: add custom title text for all of the forms on that post.
+  2. Optional: add a custom short title for all forms on that post.
+5. Add the shortcode `[mvi_fa_frontend_form]` to your post. Could be done in a single post template or manually. This will render a download form if the post has a file attached.
+  1. If you would like to render the title only use `[mvi_fa_frontend_form form="false"]`. If you would like to render the short title use `[mvi_fa_frontend_form form="false" use_short_title="true"]`.
+  2. If you would like to output a custom title for one instance of the form, you can override form title in the shortcode: `[mvi_fa_frontend_form title="My custom title"]`.
+
+###Example setup
+1. Use a template or theme hook to insert `[mvi_fa_frontend_form]` on every single-post, page, CPT. Can be put anywhere on the page, including in a modal.
+2. Create a CTA block/template/etc. Use `[mvi_fa_frontend_form form="false"]` as the tile for the CTA and use `[mvi_fa_frontend_form form="false" use_short_title="true"]` as the button text. The button can link to an anchor or modal.
+3. Show your CTA on all posts that have the term `has_file`.
