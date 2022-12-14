@@ -19,6 +19,20 @@
 	width: 31.5%;
 }
 
+//collapse columns on mobile
+@@media (max-width: 700px) {
+	.rwmb-row {
+		flex-direction: column;
+	}
+
+	.rwmb-row > * {
+		width: 100% !important;
+		margin-right: 0;
+		margin-left: 0;
+	}
+}
+
+
 .spam-notice {
 	font-size: 0.8em;
 }

@@ -130,12 +130,10 @@ class FrontendFileDownload implements FieldsInterface {
                 'name'          => __( 'Phone', 'mvi-file-attachment' ),
                 'id'            => self::PLUGIN_PREFIX . 'phone',
                 'type'          => 'tel',
-                'required'      => true,
                 'class' => 'phone',
                 'columns' => 8,
                 'attributes' => [
                     'placeholder'  => 'Phone (digits only)*',
-                    'pattern'      => '\d{1,15}',
                 ],
             ],
             [
@@ -145,6 +143,22 @@ class FrontendFileDownload implements FieldsInterface {
             [
                 'id'   => self::PLUGIN_PREFIX . 'reference_post_id', //This backend field must be pre-filled on frontend in order to use MB ajax submit.
                 'type' => 'hidden',
+            ],
+        ],
+				'validation' => [
+            'rules'  => [
+                self::PLUGIN_PREFIX . 'phone' => [
+                    'required'  => true,
+                    'pattern'      => '\d{1,15}',
+                ],
+                // Rules for other fields
+            ],
+            'messages' => [
+                self::PLUGIN_PREFIX . 'phone' => [
+                    'required'  => 'This field is required.',
+                    'pattern' => 'Please use only digits',
+                ],
+                // Error messages for other fields
             ],
         ],
     ];
