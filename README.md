@@ -2,7 +2,15 @@
 A gated content plugin to handle adding files to Wordpress posts, capturing user information, and emailing links to users automatically. Supports Mailchimp. Built using MetaBox.
 
 ## Requirements
-This plugin requires the following to be installed: MetaBox, and MetaBox AIO. Currently, neither are included automatically. PHP 7.4.30+
+- PHP 7.4.30+
+- MetaBox 5.6.7+
+-- MB Admin Columns 1.6.2+
+-- MB Custom Table 2.1.3+
+-- MB Frontend Submission 4.1.1+
+-- MB Settings Page 2.1.7+
+-- Meta Box Columns 1.2.15+
+-- Meta Box Tooltip 1.1.6+
+
 
 ## Set up
 Download the zip and then upload it to WP. Install and activate the plugin.
