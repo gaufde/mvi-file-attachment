@@ -23,7 +23,6 @@
 @media (max-width: 700px) {
 	.rwmb-row {
 		flex-direction: column !important;
-		background: red !important;
 	}
 
 	.rwmb-row > .rwmb-column {
