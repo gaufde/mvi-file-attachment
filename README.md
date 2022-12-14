@@ -11,6 +11,11 @@ A gated content plugin to handle adding files to Wordpress posts, capturing user
   - Meta Box Columns 1.2.15+
   - Meta Box Tooltip 1.1.6+
 
+## Pitfalls
+The plugin does not check to see if the proper MB extensions are installed. If you do not have them running, the plugin will throw many errors and break the site. Deactivate it via FTP by re-naming its directory in the plugins folder.
+
+Suggestions are welcome, but please keep in mind I can provide little support for this project. It is shared for free to help get you started on making your own solution for similar tasks.
+
 ## Features
 - Submissions are stored in a custom table.
 - Download links expire after 24 hrs.
@@ -42,6 +47,3 @@ A gated content plugin to handle adding files to Wordpress posts, capturing user
 1. Use a template or theme hook to insert `[mvi_fa_frontend_form]` on every single-post, page, CPT. Can be put anywhere on the page, including in a modal.
 2. Create a CTA block/template/etc. Use `[mvi_fa_frontend_form form="false"]` as the tile for the CTA and use `[mvi_fa_frontend_form form="false" use_short_title="true"]` as the button text. The button can link to an anchor or modal.
 3. Show your CTA on all posts that have the term `has_file`.
-
-## Pitfalls
-The plugin does not check to see if the proper MB extensions are installed. If you do not have them running, the plugin will throw many errors and break the site. Deactivate it via FTP by re-naming its directory in the plugins folder.
