@@ -3,7 +3,7 @@ namespace MVIFileAttachment\Fields;
 
 interface FieldsInterface {
 
-  const PLUGIN_PREFIX = \MVIFileAttatchmentBase::PLUGIN_PREFIX;
+  const PLUGIN_PREFIX = \MVIFileAttachmentBase::PLUGIN_PREFIX;
 
 
   /**

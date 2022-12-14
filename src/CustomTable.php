@@ -3,7 +3,7 @@ namespace MVIFileAttachment;
 
 //Create a Meta Box custom table.
 class CustomTable {
-    protected const PLUGIN_PREFIX = \MVIFileAttatchmentBase::PLUGIN_PREFIX;
+    protected const PLUGIN_PREFIX = \MVIFileAttachmentBase::PLUGIN_PREFIX;
 
     public function __construct() {
 
@@ -106,7 +106,7 @@ class CustomTable {
       if ( preg_match( ',[0-9a-fA-F]{40},', $dl_id ) == 1 ){
         global $wpdb;
         $table = self::get_id();
-        $prepared_sql = $wpdb->prepare( "SELECT ID FROM $table WHERE " . \MVIFileAttatchmentBase::PLUGIN_PREFIX . "download_id = %s", $dl_id );
+        $prepared_sql = $wpdb->prepare( "SELECT ID FROM $table WHERE " . \MVIFileAttachmentBase::PLUGIN_PREFIX . "download_id = %s", $dl_id );
         $ids = $wpdb->get_col( $prepared_sql );
       }
 
@@ -131,7 +131,7 @@ class CustomTable {
 
       if ( $data ) {
         $reference_post_id = $data['reference_post_id'];
-        $files = rwmb_meta( \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'post_download_file', array( 'limit' => 1 ), $reference_post_id);
+        $files = rwmb_meta( \MVIFileAttachmentBase::PLUGIN_PREFIX . 'post_download_file', array( 'limit' => 1 ), $reference_post_id);
 
         if ( $files ) {
           $file = reset( $files );

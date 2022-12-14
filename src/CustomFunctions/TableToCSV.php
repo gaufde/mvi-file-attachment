@@ -21,7 +21,7 @@ class TableToCSV{
     $this->db = $wpdb;                                          //Can't use global on it's own within a class so lets assign it to local object.
     $this->table = $table;
     $this->separator = $sep;
-    $this->plugin_prefix = \MVIFileAttatchmentBase::PLUGIN_PREFIX;
+    $this->plugin_prefix = \MVIFileAttachmentBase::PLUGIN_PREFIX;
 
     $generatedDate = date('d-m-Y His');                         //Date will be part of file name. I dont like to see ...(23).csv downloaded
     $this->filename = "$file_n" . "$generatedDate" . ".csv";

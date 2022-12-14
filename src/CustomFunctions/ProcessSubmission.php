@@ -46,7 +46,7 @@ class ProcessSubmission {
 		$submission->email_user();
 
 		//initialize MailchimpFunctions
-	  $mc_func = new MailchimpFunctions($submission);
+	  $mc_func = new MailchimpFunctions();
 
 		//Now we need to handle mailchimp API requests
 	  //set $debug = true and turn on WP_DEBUG as well as WP_DEBUG_LOG in config.php

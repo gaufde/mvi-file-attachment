@@ -14,7 +14,7 @@ Class ApplyTaxonomy{
   public static function register() {
     $plugin = new self();
     //run when the Posts field group is saved
-    add_action( 'rwmb_' . \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'attach_download_file_after_save_post', [$plugin, 'save_term'] );
+    add_action( 'rwmb_' . \MVIFileAttachmentBase::PLUGIN_PREFIX . 'attach_download_file_after_save_post', [$plugin, 'save_term'] );
   }
 
   //https://tommcfarlin.com/save_post-in-wordpress/
@@ -22,7 +22,7 @@ Class ApplyTaxonomy{
 
 
     $taxonomy_slug = \MVIFileAttachment\Taxonomy::get_id();
-    $files = rwmb_meta( \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'post_download_file', array( 'limit' => 1 ), $post_id);
+    $files = rwmb_meta( \MVIFileAttachmentBase::PLUGIN_PREFIX . 'post_download_file', array( 'limit' => 1 ), $post_id);
     $terms = get_the_terms( $post_id, $taxonomy_slug);
 
     //set taxonomy if there is a file. If there is no file and a term exists, then remove all terms

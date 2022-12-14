@@ -6,24 +6,31 @@ Class Shortcode{
   public function __construct(){
     $this->settings_recaptcha_key = \MVIFileAttachment\Settings::get_field_value('settings_recaptcha_key');
     $this->settings_recaptcha_secret = \MVIFileAttachment\Settings::get_field_value('settings_recaptcha_secret');
+  }
 
-    add_action( 'wp_loaded', function () {
-      $this->register_shortcode();
-    });
+  public static function register() {
+    $plugin = new self();
+
+    add_shortcode( self::get_id(), [$plugin, 'shortcode'] ); //Register shortcode
+    add_filter( self::get_id() . '_instance', [ $plugin, 'get_instance' ] ); //Allow the shortcode to be modified/removed. https://wordpress.stackexchange.com/questions/61437/php-error-with-shortcode-handler-from-a-class/61440#61440
 
     //Register assets in WP
     add_action(  'wp_enqueue_scripts', function () {
       //path is relative to the location of this file
-      wp_register_style( 'file-form-style', plugins_url('../assets/css/mvi-file-attatchement.css',__FILE__ ), [], \MVIFileAttatchmentBase::VERSION_NO);
+      wp_register_style( 'file-form-style', plugins_url('../assets/css/mvi-file-attachment.css',__FILE__ ), [], \MVIFileAttachmentBase::VERSION_NO);
       //path is relative to the location of this file
-      wp_register_script( 'file-form-script', plugins_url('../assets/js/subscription_validation.js',__FILE__ ), [],  \MVIFileAttatchmentBase::VERSION_NO);
+      wp_register_script( 'file-form-script', plugins_url('../assets/js/subscription_validation.js',__FILE__ ), [],  \MVIFileAttachmentBase::VERSION_NO);
 
     });
   }
 
   public static function get_id() {
-    $shortcode_id = \MVIFileAttatchmentBase::PLUGIN_PREFIX . "frontend_form";
+    $shortcode_id = \MVIFileAttachmentBase::PLUGIN_PREFIX . "frontend_form";
     return $shortcode_id;
+  }
+
+  public function get_instance() {
+    return $this; // return the object
   }
 
 
@@ -63,14 +70,14 @@ Class Shortcode{
    *
    * @return string
    */
-  public function insert_file_download_form( $atts ){
+  public function shortcode( $atts ){
     //Don't break the REST API
     //https://generatepress.com/forums/topic/block-element-updating-failed-the-response-is-not-a-valid-json-response/
     ob_start();
 
     //Get the form title for this page
-    $title = rwmb_meta( \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'form_title');
-    $short_title = rwmb_meta( \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'short_title');
+    $title = rwmb_meta( \MVIFileAttachmentBase::PLUGIN_PREFIX . 'form_title');
+    $short_title = rwmb_meta( \MVIFileAttachmentBase::PLUGIN_PREFIX . 'short_title');
 
     //If the title field is blank, set the default title
     if ( !$title ) {
@@ -92,7 +99,7 @@ Class Shortcode{
     ], $atts, self::get_id() );
 
 
-    $files = rwmb_meta( \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'post_download_file', array( 'limit' => 1 )); //get only the first file from the array
+    $files = rwmb_meta( \MVIFileAttachmentBase::PLUGIN_PREFIX . 'post_download_file', array( 'limit' => 1 )); //get only the first file from the array
 
     if ( $files && $atts['form'] == 'true' ) {
 
@@ -101,7 +108,7 @@ Class Shortcode{
       wp_enqueue_script( 'file-form-script' );
 
       //prepopulate reference_post_id. This is required in order for ajax submit to work since for some reason saving the post ID after the fact doesn't work.
-      add_filter( 'rwmb_' . \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'reference_post_id_field_meta', function ( $meta, $field, $saved ) {
+      add_filter( 'rwmb_' . \MVIFileAttachmentBase::PLUGIN_PREFIX . 'reference_post_id_field_meta', function ( $meta, $field, $saved ) {
         $meta = get_the_ID();
         return $meta;
       }, 10, 3 );
@@ -136,14 +143,7 @@ Class Shortcode{
       return $atts['short_title'];
     }
 
-
     return ob_get_clean();
   }
-
-
-  public function register_shortcode () {
-      add_shortcode( self::get_id(), [$this, 'insert_file_download_form'] );
-  }
-
 
 }

@@ -12,7 +12,7 @@ Navigate to File Downloads -> Settings to configure the plugin. Choose which pos
 ## Use
 On post types configured to accept downloads, there will be a field at the bottom of the page to upload a file. This is the file that will be served as a download. The other two optional fields allow you to configure the title of the form and a shortened title of the form. These titles will be used on the frontend of that post, unless the shortcode overrides them.
 
-On the frontend, simply use the shortcode [mvi_fa_frontend_form] to display the form on the frontend. The form will only render if the current post has a download file attatched.
+On the frontend, simply use the shortcode [mvi_fa_frontend_form] to display the form on the frontend. The form will only render if the current post has a download file attached.
 
 The shortcode can be used to display the form title only: [mvi_fa_frontend_form form="false"].
 If you would like to output a custom title for one instance, you can override the default form title in the shortcode: [mvi_fa_frontend_form title="My custom title"].

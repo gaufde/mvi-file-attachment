@@ -8,7 +8,7 @@ class Submission{
 			public function __construct( $config, $post_id ) {
 					$this->config = $config;
 					$this->post_id = $post_id;
-					$this->plugin_prefix = \MVIFileAttatchmentBase::PLUGIN_PREFIX;
+					$this->plugin_prefix = \MVIFileAttachmentBase::PLUGIN_PREFIX;
 
 					$this->email = $_POST[$this->plugin_prefix . 'email'];
 			    $this->email = mb_strtolower($this->email);

@@ -22,7 +22,7 @@ class PostType {
      * @return string
      */
   	public static function get_id() {
-  		$id = \MVIFileAttatchmentBase::PLUGIN_PREFIX . "submissions";
+  		$id = \MVIFileAttachmentBase::PLUGIN_PREFIX . "submissions";
   		return $id;
   	}
 

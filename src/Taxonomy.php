@@ -20,11 +20,11 @@ class Taxonomy {
      * @return string
      */
   	public static function get_id() {
-  		$id = \MVIFileAttatchmentBase::PLUGIN_PREFIX . "file-status";
+  		$id = \MVIFileAttachmentBase::PLUGIN_PREFIX . "file-status";
   		return $id;
   	}
 
-    //Register Taxonomy for tracking if post has pdf download attatched
+    //Register Taxonomy for tracking if post has pdf download attached
     public function file_download_register_taxonomy() {
     	$labels = [
     		'name'                       => esc_html__( 'MVI File downloads', 'mvi-file-attachment' ),

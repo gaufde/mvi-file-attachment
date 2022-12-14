@@ -7,7 +7,7 @@ class AdminColumn extends \MBAC\Post {
         $columns  = parent::columns( $columns );
         $position = '';
         $target   = '';
-        $this->add( $columns, 'full_phone', 'Phone', 'after', \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'professional_role' );
+        $this->add( $columns, 'full_phone', 'Phone', 'after', \MVIFileAttachmentBase::PLUGIN_PREFIX . 'professional_role' );
         // Add more if you want
         return $columns;
     }
@@ -19,8 +19,8 @@ class AdminColumn extends \MBAC\Post {
                   'storage_type' => 'custom_table',
                   'table' => $table
                 ];
-                $country_code = rwmb_meta( \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'country_code', $rwmb_meta_args, $post_id);
-                $phone = rwmb_meta( \MVIFileAttatchmentBase::PLUGIN_PREFIX . 'phone', $rwmb_meta_args, $post_id);
+                $country_code = rwmb_meta( \MVIFileAttachmentBase::PLUGIN_PREFIX . 'country_code', $rwmb_meta_args, $post_id);
+                $phone = rwmb_meta( \MVIFileAttachmentBase::PLUGIN_PREFIX . 'phone', $rwmb_meta_args, $post_id);
                 $full_phone = "+" . "$country_code" . " $phone";
                 echo "<a href='tel:$full_phone'>$full_phone</a>";
                 break;
