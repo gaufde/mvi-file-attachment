@@ -19,6 +19,7 @@ Autoload/require dependencies
 ********************/
 require("vendor/autoload.php");
 
+//Don't run if MetaBox isn't installed.
 if ( !defined( 'RWMB_VER' ) ) {
   return;
 }
@@ -43,18 +44,7 @@ if ( !class_exists( 'MVIFileAttachmentBase' ) ) {
   		add_action( 'init', [$plugin, 'on_init']);
       add_action( 'init', [$plugin, 'on_init_admin'], 5); //For some reason needs to be high-priority init hook
       add_action( self::PLUGIN_PREFIX . 'export_file', ['MVIFileAttachment\CustomFunctions\CsvExport', 'run_export_file'] ); //add the CSV export action for the event that is scheduled in on_activation()
-  		add_filter( 'get_mvi_file_attachment_base_instance', [ $plugin, 'get_instance' ] ); //save the instance of this object so that the process can be removed or modified later.
   	}
-
-  	/**
-  	 * Get instance
-  	 * Reference: https://wordpress.stackexchange.com/questions/61437/php-error-with-shortcode-handler-from-a-class/61440#61440
-     *
-     * @return object
-     */
-  	public function get_instance() {
-    	return $this; // return the object
-    }
 
     public function on_init() {
       MVIFileAttachment\PostType::register(); //Create the post type for storing downloads

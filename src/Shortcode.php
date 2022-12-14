@@ -24,11 +24,22 @@ Class Shortcode{
     });
   }
 
+  /**
+	 * Get the id of the shortcode
+   *
+   * @return string
+   */
   public static function get_id() {
     $shortcode_id = \MVIFileAttachmentBase::PLUGIN_PREFIX . "frontend_form";
     return $shortcode_id;
   }
 
+  /**
+	 * Get instance
+	 * Reference: https://wordpress.stackexchange.com/questions/61437/php-error-with-shortcode-handler-from-a-class/61440#61440
+   *
+   * @return object
+   */
   public function get_instance() {
     return $this; // return the object
   }
@@ -65,7 +76,7 @@ Class Shortcode{
   }
 
   /**
-   * Insert file download form
+   * Shortcode
    * Custom shortcode to output the download form
    *
    * @return string

@@ -11,18 +11,7 @@ class ProcessSubmission {
 	public static function register() {
 		$plugin = new self();
 		add_action( 'rwmb_frontend_after_process', [$plugin, 'on_rwmb_frontend_after_process'], 10, 2 );
-		add_filter( 'get_process_submission_instance', [ $plugin, 'get_instance' ] ); //save the instance of this object so that the process can be removed or modified later.
 	}
-
-	/**
-	 * Get instance
-	 * Reference: https://wordpress.stackexchange.com/questions/61437/php-error-with-shortcode-handler-from-a-class/61440#61440
-   *
-   * @return object
-   */
-	public function get_instance() {
-  	return $this; // return the object
-  }
 
 
 	public function __construct() {
