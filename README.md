@@ -36,7 +36,10 @@ A gated content plugin to handle adding files to Wordpress posts, capturing user
   1. If you would like to render the title only use `[mvi_fa_frontend_form form="false"]`. If you would like to render the short title use `[mvi_fa_frontend_form form="false" use_short_title="true"]`.
   2. If you would like to output a custom title for one instance of the form, you can override form title in the shortcode: `[mvi_fa_frontend_form title="My custom title"]`.
 
-### Example setup
+## Example setup
 1. Use a template or theme hook to insert `[mvi_fa_frontend_form]` on every single-post, page, CPT. Can be put anywhere on the page, including in a modal.
 2. Create a CTA block/template/etc. Use `[mvi_fa_frontend_form form="false"]` as the tile for the CTA and use `[mvi_fa_frontend_form form="false" use_short_title="true"]` as the button text. The button can link to an anchor or modal.
 3. Show your CTA on all posts that have the term `has_file`.
+
+## Pitfalls
+The plugin does not check to see if the proper MB extensions are installed. If you do not have them running, the plugin will throw many errors and break the site. Deactivate it via FTP by re-naming its directory in the plugins folder.
