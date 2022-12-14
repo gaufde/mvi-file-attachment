@@ -1,5 +1,5 @@
 # mvi-file-attachment
-A gated content plugin to handle adding files to Wordpress posts, capturing user information, and emailing links to users automatically. Supports Mailchimp. Built using MetaBox.
+A gated content plugin to handle adding files to Wordpress posts, capturing user information, and emailing download links to users automatically. Supports Mailchimp. Built using MetaBox.
 
 ## Requirements
 - PHP 7.4.30+
