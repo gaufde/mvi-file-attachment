@@ -10,7 +10,7 @@ class FrontendFileDownload implements FieldsInterface {
 
 	/**
    * Get ID
-   * Get the ID for this settings page
+   *
    *
    * @return string
    */
@@ -18,6 +18,7 @@ class FrontendFileDownload implements FieldsInterface {
 		$id = self::PLUGIN_PREFIX . "frontend-form-fields";
 		return $id;
 	}
+
   /**
    * Return Fields
    *
@@ -163,6 +164,12 @@ class FrontendFileDownload implements FieldsInterface {
         ],
     ];
 
+		$desc = __( $newsletter_desc, 'mvi-file-attachment' );
+		if ( !is_admin() ){
+			$svg = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\" viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z\"></path></svg>";
+			$desc = __( "<span class=\"checkmark\">" . $svg . "</span><span>" . $newsletter_desc . "</span>", 'mvi-file-attachment' );
+		}
+
     //If mailchimp values are put in settings, then show the signup checkbox
     if ( $settings_mailchimp_key && $settings_mailchimp_list_id ) {
         array_splice(
@@ -176,8 +183,7 @@ class FrontendFileDownload implements FieldsInterface {
               'type'          => 'checkbox',
               'std'           => 0,
               'required'      => false,
-              'desc'          => __( "<span class=\"checkmark\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\" viewBox=\"0 0 24 24\"><path fill=\"currentColor\" d=\"M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z\"></path></svg></span>
-                                <span>" . "$newsletter_desc" . "</span>", 'mvi-file-attachment' ),
+              'desc'          => $desc,
             ]
           ]
         );

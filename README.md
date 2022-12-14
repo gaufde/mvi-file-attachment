@@ -1,5 +1,5 @@
 # mvi-file-attachment
-A gated content plugin to handle adding files to wordpress posts, capturing user information, and emailing links to users automatically. Supports Mailchimp. Built using MetaBox.
+A gated content plugin to handle adding files to Wordpress posts, capturing user information, and emailing links to users automatically. Supports Mailchimp. Built using MetaBox.
 
 ## Requirements
 This plugin requires the following to be installed: MetaBox, and MetaBox AIO. Currently, neither are included automatically. PHP 7.4.30+
@@ -21,6 +21,8 @@ If you want to display the short title: [mvi_fa_frontend_form form="false" use_s
 I suggest putting the shortcode [mvi_fa_frontend_form] in a template or theme hook so that it renders of every single page. Then, if you would like to make buttons that link to the form (or trigger a modal if you put the form in a pop-up), then use [mvi_fa_frontend_form form="false" use_short_title="true"] as the button text.
 
 ## Features
+
+Submissions are stored in a custom table.
 
 When a download file on a post is updated, all existing user download links will still find and deliver the new file, even if the file path changed.
 
