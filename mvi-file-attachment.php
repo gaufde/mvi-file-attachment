@@ -2,7 +2,7 @@
 /*
 Plugin Name: MVI File Attachment
 Description: Plugin to allow files to be attatched to posts and automatically create email capture forms to handle download requests.
-Version: 2.0.2
+Version: 2.0.3
 Author: Graceson Aufderheide
 License: GPLv2 or later
 Text Domain: mvi-file-attachment
@@ -27,7 +27,7 @@ if ( !class_exists( 'MVIFileAttatchmentBase' ) ) {
 
   class MVIFileAttatchmentBase {
     const PLUGIN_PREFIX = 'mvi_fa_';
-    const VERSION_NO = '2.0.2';
+    const VERSION_NO = '2.0.3';
 
     /**
      * Registers this class with WordPress.
