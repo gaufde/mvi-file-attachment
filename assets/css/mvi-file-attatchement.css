@@ -19,15 +19,16 @@
 	width: 31.5%;
 }
 
-//collapse columns on mobile
-@@media (max-width: 700px) {
+/*collapse columns on mobile*/
+@media (max-width: 700px) {
 	.rwmb-row {
-		flex-direction: column;
+		flex-direction: column !important;
+		background: red !important;
 	}
 
-	.rwmb-row > * {
+	.rwmb-row > .rwmb-column {
 		width: 100% !important;
-		margin-right: 0;
+		margin-right: 0 !important;
 		margin-left: 0;
 	}
 }
