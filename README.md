@@ -1,7 +1,9 @@
 # mvi-file-attachment
+
 A gated content plugin to handle adding files to Wordpress posts, capturing user information, and emailing download links to users automatically. Supports Mailchimp. Built using MetaBox.
 
 ## Requirements
+
 - PHP 7.4.30+
 - MetaBox 5.6.7+
   - MB Admin Columns 1.6.2+
@@ -11,12 +13,12 @@ A gated content plugin to handle adding files to Wordpress posts, capturing user
   - Meta Box Columns 1.2.15+
   - Meta Box Tooltip 1.1.6+
 
-## Pitfalls
-The plugin does not check to see if the proper MB extensions are installed. If you do not have them running, the plugin will throw many errors and break the site. Deactivate it via FTP by re-naming its directory in the plugins folder.
+## Contributions and Support
 
-Suggestions are welcome, but please keep in mind I can provide little support for this project. It is shared for free to help get you started on making your own solution for similar tasks.
+Contributions are welcome, but please keep in mind I can provide little support for this project. It is shared for free to help get you started on making your own solution for similar tasks.
 
 ## Features
+
 - Submissions are stored in a custom table.
 - Download links expire after 24 hrs.
 - Download links hide the direct path to the file.
@@ -33,17 +35,19 @@ Suggestions are welcome, but please keep in mind I can provide little support fo
   - The user will see a response on the frontend if their subscription succeeded.
 
 ## Use
+
 1. Download and activate the plugin
 2. Go to File Downloads -> Settings in the Wordpress admin.
 3. Configure the settings. Most important are the 'From Address', 'From Name', 'Email CSV exports' and 'Select Post Types' fields. The rest are optional.
 4. Navigate to a post to attatch a download file (must be a post type selected in Settings). Scroll to the bottom and upload the desired file.
-  1. Optional: add custom title text for all of the forms on that post.
-  2. Optional: add a custom short title for all forms on that post.
-5. Add the shortcode `[mvi_fa_frontend_form]` to your post. Could be done in a single post template or manually. This will render a download form if the post has a file attached.
-  1. If you would like to render the title only use `[mvi_fa_frontend_form form="false"]`. If you would like to render the short title use `[mvi_fa_frontend_form form="false" use_short_title="true"]`.
-  2. If you would like to output a custom title for one instance of the form, you can override form title in the shortcode: `[mvi_fa_frontend_form title="My custom title"]`.
+5. Optional: add custom title text for all of the forms on that post.
+6. Optional: add a custom short title for all forms on that post.
+7. Add the shortcode `[mvi_fa_frontend_form]` to your post. Could be done in a single post template or manually. This will render a download form if the post has a file attached.
+8. If you would like to render the title only use `[mvi_fa_frontend_form form="false"]`. If you would like to render the short title use `[mvi_fa_frontend_form form="false" use_short_title="true"]`.
+9. If you would like to output a custom title for one instance of the form, you can override form title in the shortcode: `[mvi_fa_frontend_form title="My custom title"]`.
 
 ## Example setup
+
 1. Use a template or theme hook to insert `[mvi_fa_frontend_form]` on every single-post, page, CPT. Can be put anywhere on the page, including in a modal.
 2. Create a CTA block/template/etc. Use `[mvi_fa_frontend_form form="false"]` as the tile for the CTA and use `[mvi_fa_frontend_form form="false" use_short_title="true"]` as the button text. The button can link to an anchor or modal.
 3. Show your CTA on all posts that have the term `has_file`.
