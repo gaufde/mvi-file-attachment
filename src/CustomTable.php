@@ -56,7 +56,7 @@ class CustomTable
           $result = true;
           //error_log("The table db version number ({$current_db_ver}) for {$table_name} was updated.");
         } else {
-          add_op(self::PLUGIN_PREFIX . "db_version", $current_db_ver);
+          add_option(self::PLUGIN_PREFIX . "db_version", $current_db_ver);
           $result = true;
           //error_log("The table db version number ({$current_db_ver}) for {$table_name} was added.");
         }
