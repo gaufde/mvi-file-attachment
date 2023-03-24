@@ -1,33 +1,40 @@
 <?php
+
 namespace MVIFileAttachment\VirtualDownloadPage;
 
 
-class TemplateLoader implements TemplateLoaderInterface {
+class TemplateLoader implements TemplateLoaderInterface
+{
+  private $templates;
 
-  public function init( PageInterface $page ) {
+  public function init(PageInterface $page)
+  {
     $this->templates = wp_parse_args(
-      array( 'page.php', 'index.php' ), (array) $page->getTemplate()
+      array('page.php', 'index.php'),
+      (array) $page->getTemplate()
     );
   }
 
-  public function load() {
-    do_action( 'template_redirect' );
-    $template = locate_template( array_filter( $this->templates ) );
+  public function load()
+  {
+    do_action('template_redirect');
+    $template = locate_template(array_filter($this->templates));
 
     $template = locate_block_template(
-      $template ,
+      $template,
       'page',
       array()
     );
 
-    $filtered = apply_filters( 'template_include',
-      apply_filters( 'virtual_page_template', $template )
+    $filtered = apply_filters(
+      'template_include',
+      apply_filters('virtual_page_template', $template)
     );
-    if ( empty( $filtered ) || file_exists( $filtered ) ) {
+    if (empty($filtered) || file_exists($filtered)) {
       $template = $filtered;
     }
 
-    if ( ! empty( $template ) && file_exists( $template ) ) {
+    if (!empty($template) && file_exists($template)) {
       require_once $template;
     }
   }

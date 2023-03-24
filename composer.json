@@ -2,9 +2,28 @@
     "require": {
         "drewm/mailchimp-api": "^2.5"
     },
+    "require-dev": {
+        "wpackagist-plugin/meta-box": "^5.6.7",
+        "meta-box/mb-admin-columns": "dev-master",
+        "meta-box/mb-custom-table": "dev-master",
+        "meta-box/mb-frontend-submission": "dev-master",
+        "meta-box/mb-settings-page": "dev-master",
+        "meta-box/meta-box-columns": "dev-master",
+        "meta-box/meta-box-tooltip": "dev-master"
+    },
+    "extra": {
+        "installer-paths": {
+          "vendor/meta-box/{$name}": ["vendor:wpackagist-plugin", "vendor:meta-box"]
+        }
+      },
     "autoload": {
         "psr-4": {
             "MVIFileAttachment\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
         }
     }
 }

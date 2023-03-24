@@ -1,8 +1,10 @@
 <?php
+
 namespace MVIFileAttachment\VirtualDownloadPage;
 
 
-interface PageInterface {
+interface PageInterface
+{
 
   function getUrl();
 
@@ -10,16 +12,16 @@ interface PageInterface {
 
   function getTitle();
 
-  function setTitle( $title );
+  function setTitle($title);
 
-  function setContent( $content );
+  function setContent($content);
 
-  function setTemplate( $template );
+  function setTemplate($template);
 
   /**
-  * Get a WP_Post build using viryual Page object
-  *
-  * @return \WP_Post
-  */
+   * Get a WP_Post build using viryual Page object
+   *
+   * @return \WP_Post
+   */
   function asWpPost();
 }

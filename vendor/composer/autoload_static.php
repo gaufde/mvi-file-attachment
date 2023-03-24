@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf5e14479d515b4ceb74a68f804506420
+class ComposerStaticInit802a5babf466f1c72d634e513adfe6a1
 {
     public static $prefixLengthsPsr4 = array (
         'M' => 
@@ -14,6 +14,10 @@ class ComposerStaticInitf5e14479d515b4ceb74a68f804506420
         'D' => 
         array (
             'DrewM\\MailChimp\\' => 16,
+        ),
+        'C' => 
+        array (
+            'Composer\\Installers\\' => 20,
         ),
     );
 
@@ -26,6 +30,10 @@ class ComposerStaticInitf5e14479d515b4ceb74a68f804506420
         array (
             0 => __DIR__ . '/..' . '/drewm/mailchimp-api/src',
         ),
+        'Composer\\Installers\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
+        ),
     );
 
     public static $classMap = array (
@@ -35,9 +43,9 @@ class ComposerStaticInitf5e14479d515b4ceb74a68f804506420
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf5e14479d515b4ceb74a68f804506420::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf5e14479d515b4ceb74a68f804506420::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf5e14479d515b4ceb74a68f804506420::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit802a5babf466f1c72d634e513adfe6a1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit802a5babf466f1c72d634e513adfe6a1::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit802a5babf466f1c72d634e513adfe6a1::$classMap;
 
         }, null, ClassLoader::class);
     }

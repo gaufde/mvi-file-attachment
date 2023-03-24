@@ -2,7 +2,7 @@
 /*
 Plugin Name: MVI File Attachment
 Description: Plugin to allow files to be attached to posts and automatically create email capture forms to handle download requests.
-Version: 2.0.5
+Version: 2.1.0
 Author: Graceson Aufderheide
 License: GPLv2 or later
 Text Domain: mvi-file-attachment
@@ -83,7 +83,7 @@ if (!class_exists('MVIFileAttachmentBase')) {
   class MVIFileAttachmentBase
   {
     const PLUGIN_PREFIX = 'mvi_fa_';
-    const VERSION_NO = '2.0.5';
+    const VERSION_NO = '2.1.0';
 
     /**
      * Registers this class with WordPress.
@@ -94,6 +94,7 @@ if (!class_exists('MVIFileAttachmentBase')) {
       add_action('init', [$plugin, 'on_init']);
       add_action('init', [$plugin, 'on_init_admin'], 5); //For some reason needs to be high-priority init hook
       add_action(self::PLUGIN_PREFIX . 'export_file', ['MVIFileAttachment\CustomFunctions\CsvExport', 'run_export_file']); //add the CSV export action for the event that is scheduled in on_activation()
+      self::on_plugins_loaded();
     }
 
     public function on_init()
@@ -126,6 +127,11 @@ if (!class_exists('MVIFileAttachmentBase')) {
     public static function on_deactivation()
     {
       MVIFileAttachment\CustomFunctions\CsvExport::deactivate_weekly_export();
+    }
+
+    public static function on_plugins_loaded()
+    {
+      MVIFileAttachment\CustomTable::update_table();
     }
   }
 

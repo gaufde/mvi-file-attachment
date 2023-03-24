@@ -1,7 +1,9 @@
 <?php
+
 namespace MVIFileAttachment\Fields;
 
-interface FieldsInterface {
+interface FieldsInterface
+{
 
   const PLUGIN_PREFIX = \MVIFileAttachmentBase::PLUGIN_PREFIX;
 
@@ -19,5 +21,4 @@ interface FieldsInterface {
    * @return array
    */
   static function return_fields();
-
 }

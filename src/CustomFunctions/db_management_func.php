@@ -22,10 +22,10 @@ function delete_old_entires(){
   			$query->the_post();
         $post_id = get_the_ID();
         $export_count = rwmb_meta( PLUGIN_PREFIX . 'export_count', ['storage_type' => 'custom_table', 'table' => WPDB_PREFIX . 'mvi_file_downloads'], $post_id);
-        $tstamp = rwmb_meta( PLUGIN_PREFIX . 'tstamp', ['storage_type' => 'custom_table', 'table' => WPDB_PREFIX . 'mvi_file_downloads'], $post_id);
+        $date_time = rwmb_meta( PLUGIN_PREFIX . 'date_time', ['storage_type' => 'custom_table', 'table' => WPDB_PREFIX . 'mvi_file_downloads'], $post_id);
 
         //delete expired posts which have been exported
-        if ($_SERVER["REQUEST_TIME"] - $tstamp > EXPIRE_TIME && $export_count > 1 ){
+        if ($_SERVER["REQUEST_TIME"] - $date_time > EXPIRE_TIME && $export_count > 1 ){
           wp_delete_post( $post_id );
         }
   		}
@@ -33,3 +33,4 @@ function delete_old_entires(){
     wp_reset_postdata();
   }
 }
+*/
