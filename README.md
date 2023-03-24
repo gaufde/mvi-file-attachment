@@ -8,7 +8,7 @@ A gated content plugin to handle adding files to Wordpress posts, capturing user
 - MetaBox 5.6.7+
   - MB Admin Columns 1.6.2+
   - MB Custom Table 2.1.3+
-  - MB Frontend Submission 4.1.1+
+  - MB Frontend Submission 4.2.0+
   - MB Settings Page 2.1.7+
   - Meta Box Columns 1.2.15+
   - Meta Box Tooltip 1.1.6+
