@@ -42,7 +42,7 @@ class CustomTable
     $table_exists = $wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") === $table_name; //bool check if table exists
 
     if ($table_exists) {
-      $current_columns = $wpdb->get_col("SHOW COLUMNS FROM {$table_name};", 0);
+      $current_columns = $wpdb->get_col("SHOW COLUMNS FROM {$table_name}", 0);
       array_shift($current_columns); //remove the ID column since we don't define that
       $intended_columns = array_keys(self::table_columns());
 
