@@ -1,4 +1,4 @@
-# mvi-file-attachment
+# mvi-webinar-registration
 
 A gated content plugin to handle adding files to Wordpress posts, capturing user information, and emailing download links to users automatically. Supports Mailchimp. Built using MetaBox.
 
@@ -24,7 +24,7 @@ Contributions are welcome, but please keep in mind I can provide little support 
 - Download links hide the direct path to the file.
 - Download file paths can be updated without breaking download links that were already generated.
 - If a post has a file attached, then the term `has_file` will automatically be applied in the taxonomy `mvi_fa_file-status`. This lets you do conditional filtering on the frontend.
-- Download files are stored in /{root}/file_downloads/secure/ so that you can set custom folder permissions and prevent direct access.
+- Download files are stored in /{root}/webinar_registration/secure/ so that you can set custom folder permissions and prevent direct access.
 - Download files are not added to Wordpress media. That way they can't be accidentally deleted
 - Once a week, the plugin will export a CSV with all submissions. CSV files are generated above the root in /csvoutput/.
 - If the recaptcha key and secret are configured, then the download form will use them.
@@ -37,7 +37,7 @@ Contributions are welcome, but please keep in mind I can provide little support 
 ## Use
 
 1. Download and activate the plugin
-2. Go to File Downloads -> Settings in the Wordpress admin.
+2. Go to Webinar Registrations -> Settings in the Wordpress admin.
 3. Configure the settings. Most important are the 'From Address', 'From Name', 'Email CSV exports' and 'Select Post Types' fields. The rest are optional.
 4. Navigate to a post to attatch a download file (must be a post type selected in Settings). Scroll to the bottom and upload the desired file.
 5. Optional: add custom title text for all of the forms on that post.

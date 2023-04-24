@@ -1,8 +1,8 @@
 <?php
 
-namespace MVIFileAttachment\Fields;
+namespace MVIWebinarRegistration\Fields;
 
-//Create metabox fields for the file downloads form with MB custom table
+//Create metabox fields for the webinar registrations form with MB custom table
 
 class FrontendFileDownload implements FieldsInterface
 {
@@ -31,25 +31,25 @@ class FrontendFileDownload implements FieldsInterface
      */
     public static function return_fields()
     {
-        $newsletter_desc = \MVIFileAttachment\Settings::get_field_value('settings_newsletter_desc');
+        $newsletter_desc = \MVIWebinarRegistration\Settings::get_field_value('settings_newsletter_desc');
         //set default
         if (empty($newsletter_desc)) {
             $newsletter_desc = 'Subscribe to our newsletter!';
         }
 
-        $professional_role_tags = new \MVIFileAttachment\CustomFunctions\ProfessionalRoleTagsArray;
+        $professional_role_tags = new \MVIWebinarRegistration\CustomFunctions\ProfessionalRoleTagsArray;
         $professional_role_tags_array = $professional_role_tags->generate_associative_array();
 
         //Get the mailchimp key and ID
-        $settings_mailchimp_key = \MVIFileAttachment\Settings::get_field_value('settings_mailchimp_key');
-        $settings_mailchimp_list_id = \MVIFileAttachment\Settings::get_field_value('settings_mailchimp_list_id');
+        $settings_mailchimp_key = \MVIWebinarRegistration\Settings::get_field_value('settings_mailchimp_key');
+        $settings_mailchimp_list_id = \MVIWebinarRegistration\Settings::get_field_value('settings_mailchimp_list_id');
 
-        $table = \MVIFileAttachment\CustomTable::get_id();
+        $table = \MVIWebinarRegistration\CustomTable::get_id();
 
         $frontend_fields = [
-            'title' => __('File Download Form Fields', 'mvi-file-attachment'),
+            'title' => __('File Download Form Fields', 'mvi-webinar-registration'),
             'id' => self::get_id(),
-            'post_types' => [\MVIFileAttachment\PostType::get_id()],
+            'post_types' => [\MVIWebinarRegistration\PostType::get_id()],
             'storage_type' => 'custom_table',
             // Important
             'table' => $table,
@@ -57,10 +57,10 @@ class FrontendFileDownload implements FieldsInterface
             'fields' => [
                 [
                     'type' => 'custom_html',
-                    'std' => '<em class="spam-notice">No spam, a download link will be sent directly to you. </em>',
+                    'std' => '<em class="spam-notice">Meeting details will be emailed to you.</em>',
                 ],
                 [
-                    'name' => __('First Name', 'mvi-file-attachment'),
+                    'name' => __('First Name', 'mvi-webinar-registration'),
                     'id' => self::PLUGIN_PREFIX . 'first_name',
                     'type' => 'text',
                     'required' => true,
@@ -76,7 +76,7 @@ class FrontendFileDownload implements FieldsInterface
                     ],
                 ],
                 [
-                    'name' => __('Last Name', 'mvi-file-attachment'),
+                    'name' => __('Last Name', 'mvi-webinar-registration'),
                     'id' => self::PLUGIN_PREFIX . 'last_name',
                     'type' => 'text',
                     'required' => true,
@@ -92,7 +92,7 @@ class FrontendFileDownload implements FieldsInterface
                     ],
                 ],
                 [
-                    'name' => __('Email', 'mvi-file-attachment'),
+                    'name' => __('Email', 'mvi-webinar-registration'),
                     'id' => self::PLUGIN_PREFIX . 'email',
                     'type' => 'email',
                     'required' => true,
@@ -108,7 +108,7 @@ class FrontendFileDownload implements FieldsInterface
                     ],
                 ],
                 [
-                    'name' => __('Professional Role', 'mvi-file-attachment'),
+                    'name' => __('Professional Role', 'mvi-webinar-registration'),
                     'id' => self::PLUGIN_PREFIX . 'professional_role',
                     'type' => 'select',
                     'multiple' => false,
@@ -124,7 +124,7 @@ class FrontendFileDownload implements FieldsInterface
                     ],
                 ],
                 [
-                    'name' => __('Country Code', 'mvi-file-attachment'),
+                    'name' => __('Country Code', 'mvi-webinar-registration'),
                     'id' => self::PLUGIN_PREFIX . 'country_code',
                     'type' => 'text',
                     'required' => true,
@@ -136,7 +136,7 @@ class FrontendFileDownload implements FieldsInterface
                     ],
                 ],
                 [
-                    'name' => __('Phone', 'mvi-file-attachment'),
+                    'name' => __('Phone', 'mvi-webinar-registration'),
                     'id' => self::PLUGIN_PREFIX . 'phone',
                     'type' => 'tel',
                     'class' => 'phone',
@@ -150,7 +150,7 @@ class FrontendFileDownload implements FieldsInterface
                     'std' => '<p class="recaptcha-notice">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.</p>',
                 ],
                 [
-                    'id' => self::PLUGIN_PREFIX . 'reference_post_id',
+                    'id' => self::PLUGIN_PREFIX . 'shortcode_atts',
                     //This backend field must be pre-filled on frontend in order to use MB ajax submit.
                     'type' => 'hidden',
                 ],

@@ -1,6 +1,6 @@
 <?php
 
-namespace MVIFileAttachment;
+namespace MVIWebinarRegistration;
 
 //Create a Meta Box custom admin column.
 class CustomAdminColumn
@@ -20,6 +20,6 @@ class CustomAdminColumn
 
   public function initialize_admin_column()
   {
-    new CustomFunctions\AdminColumn(\MVIFileAttachment\PostType::get_id(), array());
+    new CustomFunctions\AdminColumn(\MVIWebinarRegistration\PostType::get_id(), array());
   }
 }
