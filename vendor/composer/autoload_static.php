@@ -4,12 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0eadad9af67635759e2f9869ea953c41
+class ComposerStaticInit802a5babf466f1c72d634e513adfe6a1
 {
     public static $prefixLengthsPsr4 = array (
         'M' => 
         array (
-            'MVIWebinarRegistration\\' => 23,
+            'MVIFileAttachment\\' => 18,
         ),
         'D' => 
         array (
@@ -22,7 +22,7 @@ class ComposerStaticInit0eadad9af67635759e2f9869ea953c41
     );
 
     public static $prefixDirsPsr4 = array (
-        'MVIWebinarRegistration\\' => 
+        'MVIFileAttachment\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
@@ -43,9 +43,9 @@ class ComposerStaticInit0eadad9af67635759e2f9869ea953c41
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0eadad9af67635759e2f9869ea953c41::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0eadad9af67635759e2f9869ea953c41::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit0eadad9af67635759e2f9869ea953c41::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit802a5babf466f1c72d634e513adfe6a1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit802a5babf466f1c72d634e513adfe6a1::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit802a5babf466f1c72d634e513adfe6a1::$classMap;
 
         }, null, ClassLoader::class);
     }

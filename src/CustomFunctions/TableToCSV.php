@@ -1,6 +1,6 @@
 <?php
 
-namespace MVIWebinarRegistration\CustomFunctions;
+namespace MVIFileAttachment\CustomFunctions;
 use \MetaBox\CustomTable\API;
 
 //https://stackoverflow.com/questions/14160511/export-to-csv-wordpress
@@ -28,7 +28,7 @@ class TableToCSV
     $this->db = $wpdb; //Can't use global on it's own within a class so lets assign it to local object.
     $this->table = $table;
     $this->separator = $sep;
-    $this->plugin_prefix = \MVIWebinarRegistrationBase::PLUGIN_PREFIX;
+    $this->plugin_prefix = \MVIFileAttachmentBase::PLUGIN_PREFIX;
 
     $generatedDate = date('d-m-Y His'); //Date will be part of file name. I dont like to see ...(23).csv downloaded
     $this->filename = "$file_n" . "$generatedDate" . ".csv";
@@ -48,7 +48,7 @@ class TableToCSV
     if (!empty($ids)) {
 
       $this->internal_query = new \WP_Query([
-        'post_type' => \MVIWebinarRegistration\PostType::get_id(),
+        'post_type' => \MVIFileAttachment\PostType::get_id(),
         'post__in' => $ids,
         'posts_per_page' => -1, //get all posts
       ]);
@@ -118,14 +118,14 @@ class TableToCSV
 
   function email_admin()
   {
-    $settings_export_emails = \MVIWebinarRegistration\Settings::get_field_value('settings_export_emails');
+    $settings_export_emails = \MVIFileAttachment\Settings::get_field_value('settings_export_emails');
 
     if ($settings_export_emails) {
       $to = "$settings_export_emails";
       $site_url = get_site_url();
       $headers = ['Content-type: text/html', "Reply-To: $to"];
-      $subject = "Webinar Registration Information";
-      $message = "<p>Here are the emails from people who registered for our webinar from your website $site_url. Only the new entries since the previous export have been included.</p>";
+      $subject = "User Download Information";
+      $message = "<p>Here are the emails from people who downloaded files from your website $site_url. Only the new entries since the previous export have been included.</p>";
 
       wp_mail($to, $subject, $message, $headers, $this->file_path);
     }

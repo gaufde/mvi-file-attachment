@@ -1,11 +1,11 @@
 <?php
 
-namespace MVIWebinarRegistration\Fields;
+namespace MVIFileAttachment\Fields;
 
 interface FieldsInterface
 {
 
-  const PLUGIN_PREFIX = \MVIWebinarRegistrationBase::PLUGIN_PREFIX;
+  const PLUGIN_PREFIX = \MVIFileAttachmentBase::PLUGIN_PREFIX;
 
 
   /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace MVIWebinarRegistration\Fields;
+namespace MVIFileAttachment\Fields;
 
 class BackendFileDownload implements FieldsInterface
 {
@@ -28,32 +28,48 @@ class BackendFileDownload implements FieldsInterface
    */
   public static function return_fields()
   {
-    //Create metabox fields for the webinar registrations CPT with MB custom table. These fields are for backend only.
+    //Create metabox fields for the file downloads CPT with MB custom table. These fields are for backend only.
     if (!is_singular()) {
-      $table = \MVIWebinarRegistration\CustomTable::get_id();
+      $table = \MVIFileAttachment\CustomTable::get_id();
 
       $fields = [
-        'title' => __('Webinar Registrations Form Fields', 'mvi-webinar-registration'),
+        'title' => __('File Download Form Fields', 'mvi-file-attachment'),
         'id' => self::get_id(),
-        'post_types' => [\MVIWebinarRegistration\PostType::get_id()],
+        'post_types' => [\MVIFileAttachment\PostType::get_id()],
         'storage_type' => 'custom_table',
         // Important
         'table' => $table,
         // Your custom table name
         'fields' => [
           [
-            'id' => self::PLUGIN_PREFIX . 'date_time',
-            'type' => 'hidden',
-          ],
-          [
-            'id' => self::PLUGIN_PREFIX . 'url_params',
-            'name' => __('URL Tracking', 'mvi-webinar-registration'),
+            'name' => __('Download Name', 'mvi-file-attachment'),
+            'id' => self::PLUGIN_PREFIX . 'download_name',
             'type' => 'hidden',
             'admin_columns' => [
               'position' => 'after ' . self::PLUGIN_PREFIX . 'professional_role',
+              'sort' => true,
               'searchable' => true,
               'filterable' => true,
             ],
+          ],
+          [
+            'id' => self::PLUGIN_PREFIX . 'download_id',
+            'type' => 'hidden',
+          ],
+          [
+            'name' => __('Download Count', 'mvi-file-attachment'),
+            'id' => self::PLUGIN_PREFIX . 'download_count',
+            'type' => 'hidden',
+            'admin_columns' => [
+              'position' => 'after ' . self::PLUGIN_PREFIX . 'download_name',
+              'sort' => true,
+              'searchable' => true,
+              'filterable' => true,
+            ],
+          ],
+          [
+            'id' => self::PLUGIN_PREFIX . 'date_time',
+            'type' => 'hidden',
           ],
           [
             'id' => self::PLUGIN_PREFIX . 'export_count',

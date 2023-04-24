@@ -1,6 +1,6 @@
 <?php
 
-namespace MVIWebinarRegistration\CustomFunctions;
+namespace MVIFileAttachment\CustomFunctions;
 
 //ProfessionalRoleTagsArray is responsible for creating an array of job titles that are used by both Mailchimp and MB.
 //The class ensures the arrays always agree with eachother for updating the Mailchimp database.

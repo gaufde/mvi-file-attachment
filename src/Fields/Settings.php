@@ -1,6 +1,6 @@
 <?php
 
-namespace MVIWebinarRegistration\Fields;
+namespace MVIFileAttachment\Fields;
 
 class Settings implements FieldsInterface
 {
@@ -34,7 +34,7 @@ class Settings implements FieldsInterface
     $cpts = get_post_types($args);
     $post_types = ['post' => 'post', 'page' => 'page'];
     $post_types = array_merge($post_types, $cpts); //add post and pages to array
-    $plugin_cpt = \MVIWebinarRegistration\PostType::get_id(); //remove CPT from this plugin
+    $plugin_cpt = \MVIFileAttachment\PostType::get_id(); //remove CPT from this plugin
     unset($post_types[$plugin_cpt]);
     return $post_types;
   }
@@ -47,82 +47,68 @@ class Settings implements FieldsInterface
   public static function return_fields()
   {
     $fields =  [
-      'title'          => __('Webinar Registrations Settings', 'mvi-webinar-registration'),
+      'title'          => __('File Downloads Settings', 'mvi-file-attachment'),
       'id'             => self::get_id(),
-      'settings_pages' => [\MVIWebinarRegistration\Settings::get_id()],
+      'settings_pages' => [\MVIFileAttachment\Settings::get_id()],
       'fields'         => [
         [
-          'name' => __('From Address', 'mvi-webinar-registration'),
+          'name' => __('From Address', 'mvi-file-attachment'),
           'id'   => self::PLUGIN_PREFIX . 'settings_from_email',
           'type' => 'email',
           'columns' => 6,
           'tooltip' => 'From address used when emailing users their download link.'
         ],
         [
-          'name' => __('From Name', 'mvi-webinar-registration'),
+          'name' => __('From Name', 'mvi-file-attachment'),
           'id'   => self::PLUGIN_PREFIX . 'settings_from_name',
           'type' => 'text',
           'columns' => 6,
           'tooltip' => 'From name used when emailing users their download link.'
         ],
         [
-          'name' => __('Recaptcha Key', 'mvi-webinar-registration'),
+          'name' => __('Recaptcha Key', 'mvi-file-attachment'),
           'id'   => self::PLUGIN_PREFIX . 'settings_recaptcha_key',
           'type' => 'text',
           'columns' => 6,
           'tooltip' => 'Add this if you want recaptcha protection for the frontend form.'
         ],
         [
-          'name' => __('Recaptcha Secret', 'mvi-webinar-registration'),
+          'name' => __('Recaptcha Secret', 'mvi-file-attachment'),
           'id'   => self::PLUGIN_PREFIX . 'settings_recaptcha_secret',
           'type' => 'text',
           'columns' => 6,
           'tooltip' => 'Add this if you want recaptcha protection for the frontend form.'
         ],
         [
-          'name' => __('Mailchimp API Key', 'mvi-webinar-registration'),
+          'name' => __('Mailchimp API Key', 'mvi-file-attachment'),
           'id'   => self::PLUGIN_PREFIX . 'settings_mailchimp_key',
           'type' => 'text',
           'columns' => 6,
           'tooltip' => 'Add this if you want a subscribe checkbox to appear.'
         ],
         [
-          'name' => __('Mailchimp List ID', 'mvi-webinar-registration'),
+          'name' => __('Mailchimp List ID', 'mvi-file-attachment'),
           'id'   => self::PLUGIN_PREFIX . 'settings_mailchimp_list_id',
           'type' => 'text',
           'columns' => 6,
           'tooltip' => 'Add this if you want a subscribe checkbox to appear.'
         ],
         [
-          'name' => __('Webinar Mailchimp API Key', 'mvi-webinar-registration'),
-          'id'   => self::PLUGIN_PREFIX . 'settings_webinar_mailchimp_key',
-          'type' => 'text',
-          'columns' => 6,
-          'tooltip' => 'Add this if you want a subscribe checkbox to appear.'
-        ],
-        [
-          'name' => __('Webinar Mailchimp List ID', 'mvi-webinar-registration'),
-          'id'   => self::PLUGIN_PREFIX . 'settings_webinar_mailchimp_list_id',
-          'type' => 'text',
-          'columns' => 6,
-          'tooltip' => 'Add this if you want a subscribe checkbox to appear.'
-        ],
-        [
-          'name' => __('Newsletter sign up checkbox text', 'mvi-webinar-registration'),
+          'name' => __('Newsletter sign up checkbox text', 'mvi-file-attachment'),
           'id'   => self::PLUGIN_PREFIX . 'settings_newsletter_desc',
           'type' => 'text',
           'columns' => 3,
           'tooltip' => 'Label text for the newsletter sign-up checkbox.'
         ],
         [
-          'name' => __('Email CSV exports to', 'mvi-webinar-registration'),
+          'name' => __('Email CSV exports to', 'mvi-file-attachment'),
           'id'   => self::PLUGIN_PREFIX . 'settings_export_emails',
           'type' => 'text',
           'columns' => 3,
           'tooltip' => 'Comma separated email addresses that user submissions should be sent to.'
         ],
         [
-          'name' => __('Email individual submissions to', 'mvi-webinar-registration'),
+          'name' => __('Email individual submissions to', 'mvi-file-attachment'),
           'id'   => self::PLUGIN_PREFIX . 'settings_owner_email',
           'type' => 'text',
           'pattern' => '^"([a-zA-Z \']*)" <(\w+([-+.\']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)>$',
@@ -131,19 +117,13 @@ class Settings implements FieldsInterface
           'tooltip' => 'This email will recieve a notification each time someone downloads a file.'
         ],
         [
-          'name'    => 'Allow scroll after ajax submit?',
-          'id'      => self::PLUGIN_PREFIX . 'allow_scroll',
-          'type'    => 'checkbox',
-          'std' => 0,
+          'name'    => 'Select Post Types',
+          'id'      => self::PLUGIN_PREFIX . 'settings_select_pt',
+          'type'    => 'select_advanced',
+          'multiple' => true,
+          'options' => self::get_post_types(),
           'columns' => 3,
-          'tooltip' => 'Turn this off if you want to display the form outside of the main page content. For example, inside a modal popup.'
-        ],
-        [
-          'name'    => 'Add scripts after submission',
-          'id'      => self::PLUGIN_PREFIX . 'submit_scripts',
-          'type'    => 'textarea',
-          'tooltip' => 'Use this to add tracking scripts for conversion events',
-          'sanitize_callback' => 'none',
+          'tooltip' => 'Which post types should files be uploaded to.'
         ],
       ],
       'validation' => [

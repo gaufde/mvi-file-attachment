@@ -1,6 +1,6 @@
 <?php
 
-namespace MVIWebinarRegistration;
+namespace MVIFileAttachment;
 
 //Create settings page for the plugin
 class Settings
@@ -27,7 +27,7 @@ class Settings
 	 */
 	public static function get_id()
 	{
-		$id = \MVIWebinarRegistrationBase::PLUGIN_PREFIX . "settings_page";
+		$id = \MVIFileAttachmentBase::PLUGIN_PREFIX . "settings_page";
 		return $id;
 	}
 
@@ -36,31 +36,28 @@ class Settings
 	 * rwmb_meta() does not work here
 	 *
 	 * @param string field_id
-	 * 
-	 * @return string
 	 */
-	public static function get_field_value($field_id): string
+	public static function get_field_value($field_id)
 	{
-		$field_id = \MVIWebinarRegistrationBase::PLUGIN_PREFIX . $field_id; //add the prefix
+		$field_id = \MVIFileAttachmentBase::PLUGIN_PREFIX . $field_id; //add the prefix
 		$settings = get_option(self::get_id());
-		$value = "";
 		if (isset($settings[$field_id])) {
 			$value = $settings[$field_id];
+			return $value;
 		}
-		return $value;
 	}
 
 	//create settings page
 	public function create_settings_page($settings_pages)
 	{
 		$settings_pages[] = [
-			'menu_title'    => __('Settings', 'mvi-webinar-registration'),
+			'menu_title'    => __('Settings', 'mvi-file-attachment'),
 			'id'            => self::get_id(),
 			'position'      => 0,
-			'parent'        => 'edit.php?post_type=' . \MVIWebinarRegistration\PostType::get_id(),
+			'parent'        => 'edit.php?post_type=' . \MVIFileAttachment\PostType::get_id(),
 			'style'         => 'no-boxes',
 			'columns'       => 1,
-			'submit_button' => __('Save', 'mvi-webinar-registration'),
+			'submit_button' => __('Save', 'mvi-file-attachment'),
 			'icon_url'      => 'dashicons-admin-generic',
 		];
 
