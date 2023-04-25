@@ -72,6 +72,10 @@ class BackendFileDownload implements FieldsInterface
             'type' => 'hidden',
           ],
           [
+            'id' => self::PLUGIN_PREFIX . 'url_params',
+            'type' => 'hidden',
+          ],
+          [
             'id' => self::PLUGIN_PREFIX . 'export_count',
             'type' => 'hidden',
           ],

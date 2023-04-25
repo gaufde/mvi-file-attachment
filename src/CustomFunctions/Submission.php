@@ -26,7 +26,6 @@ class Submission
 	private $files;
 	private $file;
 	private $date_time;
-	private $timezone;
 
 	public function __construct($config, $post_id)
 	{
@@ -46,12 +45,12 @@ class Submission
 		$this->download_id = sha1(uniqid($this->post_id, true)); //create a unique token to use for the download link
 		$this->download_url = get_site_url() . "/download/" . $this->download_id . "/";
 		$this->professional_role = $_POST[$this->plugin_prefix . 'professional_role'];
-		$this->subscribe = $_POST[$this->plugin_prefix . 'subscribe'];
+		$this->subscribe = $_POST[$this->plugin_prefix . 'subscribe'] ?? 0;
 		$this->files = rwmb_meta($this->plugin_prefix . 'post_download_file', array('limit' => 1), $this->reference_post_id); //get only the first file from the array
 		$this->file = reset($this->files);
 		$this->download_name = $this->file['name'];
 		$timezone = new DateTimeZone(wp_timezone_string());
-		$this->date_time = new DateTime('now', $timezone);		
+		$this->date_time = new DateTime('now', $timezone);
 	}
 
 	public function save_to_db()
@@ -61,6 +60,7 @@ class Submission
 			'download_id' => $this->download_id,
 			'download_name' => $this->download_name,
 			'date_time' => $this->date_time->format('Y-m-d H:i:s'),
+			'url_params' => $this->get_url_params(),
 		];
 
 		\MVIFileAttachment\CustomTable::update_values_no_prefix($this->post_id, $data); //save data to hidden fields
@@ -120,66 +120,38 @@ class Submission
 		}
 	}
 
-	public function newsletter_subscribe(): bool
+	public function get_url_params()
 	{
-		if ($this->subscribe == 1) {
-			return true;
-		} else {
-			return false;
+		$return = "";
+		if (class_exists("\UrlParamTrack\Session")) {
+			$return = \UrlParamTrack\Session::get_params_string();
 		}
+		return $return;
 	}
 
-	public function get_new_mailchimp_tags()
+	public function get_tag_names(): array
 	{
 		$tags = [$this->reference_post_name, "Downloaded PDF", $this->professional_role];
 		return $tags;
 	}
 
-	public function get_update_mailchimp_tags()
+	public function get_subscribe(): bool
 	{
-		$tags = [
-			[
-				"name" => $this->reference_post_name,
-				"status" => "active"
-			],
-			[
-				"name" => "Downloaded PDF",
-				"status" => "active"
-			],
-			[
-				"name" => $this->professional_role,
-				"status" => "active"
-			]
-		];
-		return $tags;
+		$return = false;
+
+		if ($this->subscribe == 1) {
+			$return = true;
+		}
+
+		return $return;
 	}
 
-	public function get_merge_var()
+	public function get_merge_var(): array
 	{
 		$merge_var = [
 			'FNAME' => $this->first_name,
 			'LNAME' => $this->last_name,
 		];
 		return $merge_var;
-	}
-
-	public function professional_role_tags_to_remove(array $subscriber_tags)
-	{
-
-		$tags_to_remove = [];
-
-		$professional_role_tags = new ProfessionalRoleTagsArray;
-		$professional_role_tags = $professional_role_tags->generate_slug_array();
-
-		$current_professional_role_tags = array_intersect($subscriber_tags, $professional_role_tags);
-
-		foreach ($current_professional_role_tags as $current_professional_role_tag) {
-			$tags_to_remove[] = [
-				"name" => $current_professional_role_tag,
-				"status" => "inactive"
-			];
-		}
-
-		return $tags_to_remove;
 	}
 }

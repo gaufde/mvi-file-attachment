@@ -6,11 +6,13 @@ class Shortcode
 {
   private $settings_recaptcha_key;
   private $settings_recaptcha_secret;
+  private $allow_scroll;
 
   public function __construct()
   {
     $this->settings_recaptcha_key = \MVIFileAttachment\Settings::get_field_value('settings_recaptcha_key');
     $this->settings_recaptcha_secret = \MVIFileAttachment\Settings::get_field_value('settings_recaptcha_secret');
+    $this->allow_scroll = \MVIFileAttachment\Settings::get_field_value('allow_scroll');
   }
 
   public static function register()
@@ -51,15 +53,15 @@ class Shortcode
 
 
   /**
-   * Recaptcha
-   * Checks for recaptcha settings and dynamically adds them to the mb_frontend_form shortcode arguments
+   * optional_shortcode_attributes
+   * Checks for recaptcha settings and dynamically adds them to the mb_frontend_form shortcode arguments. Also does this with allow_scroll.
    *
    * @return string
    */
-  public function recaptcha()
+  private function optional_shortcode_attributes()
   {
     if ($this->settings_recaptcha_secret && $this->settings_recaptcha_key) {
-      //no prefix because these functions are for populating the MB shortcode
+      //no prefix because these functions are for populating the MB shortcode. Format is: rwmb_frontend_field_value_{$attribute}.
       add_filter('rwmb_frontend_field_value_recaptcha_secret', function ($value, $args) {
         if (\MVIFileAttachment\Fields\FrontendFileDownload::get_id() !== $args['id']) {
           return; //exit if not from the right form
@@ -78,7 +80,20 @@ class Shortcode
         return $value;
       }, 10, 2);
     }
-    return;
+
+    if ($this->allow_scroll == 0) {
+      //no prefix because these functions are for populating the MB shortcode. Format is: rwmb_frontend_field_value_{$attribute}.
+      add_filter('rwmb_frontend_field_value_allow_scroll', function ($value, $args) {
+        if (\MVIFileAttachment\Fields\FrontendFileDownload::get_id() !== $args['id']) {
+          return; //exit if not from the right form
+        }
+
+        $value = $this->allow_scroll;
+        return $value;
+      }, 10, 2);
+
+      return;
+    }
   }
 
   /**
@@ -131,7 +146,7 @@ class Shortcode
       }, 10, 3);
 
       //insert recaptcha keys if they exist
-      $this->recaptcha();
+      $this->optional_shortcode_attributes();
 
       $output = '';
       //Build a simple structure with the form inside.

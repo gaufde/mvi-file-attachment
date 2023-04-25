@@ -36,15 +36,18 @@ class Settings
 	 * rwmb_meta() does not work here
 	 *
 	 * @param string field_id
+	 * 
+	 * @return string|array
 	 */
 	public static function get_field_value($field_id)
 	{
 		$field_id = \MVIFileAttachmentBase::PLUGIN_PREFIX . $field_id; //add the prefix
 		$settings = get_option(self::get_id());
+		$value = "";
 		if (isset($settings[$field_id])) {
 			$value = $settings[$field_id];
-			return $value;
 		}
+		return $value;
 	}
 
 	//create settings page

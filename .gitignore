@@ -2,3 +2,4 @@
 composer.lock
 vendor/meta-box/
 vendor/composer/installers/
+.DS_Store

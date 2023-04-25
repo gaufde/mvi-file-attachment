@@ -125,6 +125,20 @@ class Settings implements FieldsInterface
           'columns' => 3,
           'tooltip' => 'Which post types should files be uploaded to.'
         ],
+        [
+          'name'    => 'Add scripts after submission',
+          'id'      => self::PLUGIN_PREFIX . 'submit_scripts',
+          'type'    => 'textarea',
+          'tooltip' => 'Use this to add tracking scripts for conversion events',
+          'sanitize_callback' => 'none',
+        ],
+        [
+          'name'    => 'Allow scroll after ajax submit?',
+          'id'      => self::PLUGIN_PREFIX . 'allow_scroll',
+          'type'    => 'checkbox',
+          'std' => 0,
+          'tooltip' => 'Turn this off if you want to display the form outside of the main page content. For example, inside a modal popup.'
+        ],
       ],
       'validation' => [
         'messages' => [
